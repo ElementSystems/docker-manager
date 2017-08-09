@@ -1,5 +1,5 @@
 {
-	"name": "elementsystem/docker-manager",
+	"name": "elementsystems/docker-manager",
 	"description": "Container Manager Docker by Bash",
 	"keywords": ["docker", "manager docker", "bash"],
 	"homepage": "https://github.com/ElementSystems",
@@ -22,9 +22,9 @@
         }
 	],
     "support": {
-		"email": "eduardo.pinuaga-linares@elementsystems.de",
+		"email": "mail@elementsystems.de",
 		"source": "https://github.com/ElementSystems",
-		"issues": "https://github.com/ElementSystems/mydocker/issues"
+		"issues": "https://github.com/ElementSystems/docker-manager/issues"
     }
 
 }
