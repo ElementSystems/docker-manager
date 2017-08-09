@@ -18,7 +18,7 @@
 
 			{
             "type": "vcs",
-            "url": "git@github.com:ElementSystems/mydocker.git"
+            "url": "git@github.com:ElementSystems/docker-manager.git"
         }
 	],
     "support": {
