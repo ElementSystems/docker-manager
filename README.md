@@ -1,10 +1,82 @@
-# docker Prototyp
+# docker-manager
 
-Dieses ist eine kleine Anwendungsbeispiel. Wir können die protokol für schaffen Docker Containers sehen.
+Dieses ist eine kleine Anwendung für bau Docker containers.
 
 ## Installation
 
-**Windows**: Sie müssen die Docker-Konsole eingeben. Dann legen Sie sich in das Projektverzeichnis ...
+
+
+in composer.json ...
+```
+"require": {
+       .... 
+       "elementsystems/docker-manager": "0.*"
+       ...
+   }
+```
+Dann schreiben Sie in ihnen CLI ...
+**Windows**: Sie müssen die Docker-Konsole eingeben. 
+
+```
+# bash vendor/elementsystems/docker-manager/install.sh
+```
+Wenn die instalation fertig ist, können Sie myDocker.sh benutzen ...
+
+```
+# bash myDocker.sh
+```
+
+## Gebrauch Manager project
+
+Die Datenbank muss im SQL-Format sein.
+
+Es muss in ```/data/ ``` und mit dem Namen **init.sql** sein.
+
+Es ist Wichtig:
+Er muss in die erste liena setzen...
+
+```
+--Name_DataBase
+
+```
+Zu Bispiele:
+
+```
+--midb3
+CREATE DATABASE midb3;
+USE midb3;
+
+CREATE TABLE `names` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `names`
+--
+
+INSERT INTO `names` (`id`, `name`) VALUES
+(1, 'Peter'),
+(2, 'Thomas');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `names`
+--
+ALTER TABLE `names`
+  ADD PRIMARY KEY (`id`);
+
+..... etc. etc.
+
+```
+
+
+## Gebrauch entwickler
+
+Dann legen Sie sich in das Projektverzeichnis ...
 
 
 1. Schaffen der Container: (in Console) ```bash ./myDocker.sh```
@@ -94,37 +166,6 @@ Beispieldatei **init.sql**
 
 **--Name** wird dann von "myDocker.sh" verwendet, um die "backup DataBase"
 
-```
---midb3
-CREATE DATABASE midb3;
-USE midb3;
-
-CREATE TABLE `names` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `names`
---
-
-INSERT INTO `names` (`id`, `name`) VALUES
-(1, 'Peter'),
-(2, 'Thomas');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `names`
---
-ALTER TABLE `names`
-  ADD PRIMARY KEY (`id`);
-
-..... etc. etc.
-
-```
 
 ![3 containers](https://github.com/ElementSystems/docker-prototyp/blob/master/dev_install/info.jpg)
 
@@ -140,12 +181,6 @@ Die werkzeug gebraucht in diesem Anwendung. Wir installieren druch  "Composer".
 ## Backup sql
 
 **myDocker.sh** macht  eine backup Datenbank. In **./data/backup** . Der Name der Backup wird automatisch mit folgender Struktur erstellt:
-
-Wenn es ausgeführt option:remove container[r] wird
-
-```Y-m-d-hmsNameUser.sql```
-
-Wenn es ausgeführt option:Creration (run) container[1] wird
 
 ```Y-m-d-hmsNameUser-update.sql```
 
