@@ -1,0 +1,30 @@
+{
+	"name": "elementsystem/mydocker",
+	"description": "Container Manager Docker by Bash",
+	"keywords": ["docker", "manager docker", "bash"],
+	"homepage": "https://github.com/ElementSystems",
+	"time": "2017-8-9",
+	"type": "bash",
+    "license": "GPLv3",
+	"authors": [
+		{
+			"name": "Element Systems",
+			"email": "mail@elementsystems.de",
+			"homepage": "https://www.elementsystems.de",
+			"role": "Software und Consulting GmbH & Co. KG"
+		}
+	],
+	"repositories":[
+
+			{
+            "type": "vcs",
+            "url": "git@github.com:ElementSystems/mydocker.git"
+        }
+	],
+    "support": {
+		"email": "eduardo.pinuaga-linares@elementsystems.de",
+		"source": "https://github.com/ElementSystems",
+		"issues": "https://github.com/ElementSystems/mydocker/issues"
+    }
+
+}
