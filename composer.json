@@ -1,5 +1,5 @@
 {
-	"name": "elementsystem/mydocker",
+	"name": "ElementSystem/docker-manager",
 	"description": "Container Manager Docker by Bash",
 	"keywords": ["docker", "manager docker", "bash"],
 	"homepage": "https://github.com/ElementSystems",
