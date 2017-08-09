@@ -1,6 +1,6 @@
 {
 	"name": "elementsystems/docker-manager",
-	"description": "Container Manager Docker by Bash",
+	"description": "Docker Container Manager commandline",
 	"keywords": ["docker", "manager docker", "bash"],
 	"homepage": "https://github.com/ElementSystems",
 	"time": "2017-8-9",
@@ -9,7 +9,7 @@
 	"authors": [
 		{
 			"name": "Element Systems",
-			"email": "mail@elementsystems.de",
+			"email": "info@elementsystems.de",
 			"homepage": "https://www.elementsystems.de",
 			"role": "Software und Consulting GmbH & Co. KG"
 		}
@@ -22,7 +22,7 @@
         }
 	],
     "support": {
-		"email": "mail@elementsystems.de",
+		"email": "info@elementsystems.de",
 		"source": "https://github.com/ElementSystems",
 		"issues": "https://github.com/ElementSystems/docker-manager/issues"
     }
