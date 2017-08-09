@@ -1,10 +1,10 @@
 #!/bin/bash
 # -*- ENCODING: UTF-8 -*-
 clear
-source menus.sh
+source `pwd`/vendor/elementsystems/docker-manager/dev_install/menus.sh
 
 runDocker(){
-
+  myDirProject=$(basename `pwd`);
   rm .env
   echo "PORT_DB="$PORT_DB >> .env
   echo "PORT_PHPMYADMIN="$PORT_PHPMYADMIN >> .env
