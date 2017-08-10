@@ -32,7 +32,7 @@ Die Datenbank muss im SQL-Format sein.
 
 Es muss in ```/data/ ``` und mit dem Namen **init.sql** sein.
 
-Es ist Wichtig:
+**Es ist Wichtig**:
 Er muss in die erste liena setzen...
 
 ```
@@ -90,6 +90,28 @@ Dann legen Sie sich in das Projektverzeichnis ...
     1.4. Remove Containers: Option 4 (Remove und backup database)
 
     1.5. Schließen: Option 0
+
+
+Das Regeln (Datenbanksicherheit)...
+
+
+- Wir können nicht löshen Conteiners von anderen Projekt.
+
+- Wenn wir Conteineres mit SQL direct mit Docker Comandos löschen, können wir die SQL datein verlieren.
+
+
+## Backup sql
+
+**myDocker.sh** macht  eine backup Datenbank. In **./data/backup** . Der Name der Backup wird automatisch mit folgender Struktur erstellt:
+
+```Y-m-d-hms-NameUser-NameDB.sql```
+
+
+
+## Was los, wenn man "run" schlägt?
+
+
+![3 containers](https://github.com/ElementSystems/docker-prototyp/blob/master/dev_install/info.jpg)
 
 #### Optionen
 
@@ -152,28 +174,6 @@ User = root
 Password = admin
 
 
-## Datenbank die Sicherheit.
-
-Die Datenbank ist mit dem Namen im **data** gespeichert werden **init.sql**
-
-
-Die Docker-Compose-Datei importiert die Datenbank.
-
-
-Beispieldatei **init.sql**
-
-**Wichtig: Die Datei muss mit --NAME_DATABASE beginnen**
-
-**--Name** wird dann von "myDocker.sh" verwendet, um die "backup DataBase"
-
-
-- Wir können nicht löshen Conteiners von anderen Projekt.
-
-- Wenn wir Conteineres mit SQL direct mit Docker Comandos löschen, können wir die SQL datein verlieren.
-
-![3 containers](https://github.com/ElementSystems/docker-prototyp/blob/master/dev_install/info.jpg)
-
-
 
 
 
@@ -186,11 +186,7 @@ Die werkzeug gebraucht in diesem Anwendung. Wir installieren druch  "Composer".
 - **phpdocumentor** -Documentation
 - **phpcs** - Code Qualität
 
-## Backup sql
 
-**myDocker.sh** macht  eine backup Datenbank. In **./data/backup** . Der Name der Backup wird automatisch mit folgender Struktur erstellt:
-
-```Y-m-d-hms-NameUser-NameDB.sql```
 
 
 ## Datenbanksicherheit
