@@ -29,14 +29,14 @@ checkUnsereDB(){
     myDir=${myDir,,};
     arrMIS=( $MIS );
 
+    myDirclean="${myDir/-/}"
     myDb='db';
 
+
     for i in "${arrMIS[@]}"; do
+       if [[ "$i" =~ $myDirclean ]]; then
 
-       if [[ $i =~ $myDir ]]; then
-
-
-         if [[ $i =~ $myDb ]]; then
+         if [[ "$i" =~ $myDb ]]; then
            nameContainer=$i
            backupData $nameContainer $UPDATE;
          fi;
@@ -45,6 +45,7 @@ checkUnsereDB(){
         docker stop $i;
         docker rm  $i;
        fi;
+       
      done
      echo "Bitte warten Sie einen Moment ..."
      title;
