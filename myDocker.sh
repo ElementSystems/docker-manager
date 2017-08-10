@@ -113,11 +113,8 @@ backupData(){
       docker exec -i $nameContainer  bash -c "$ACCTION";
       docker cp $nameContainer:/dumpSQL/dump.sql ./data/backup
 
-      if [ $UPDATE = "update" ]; then
-        NEUNAME=$(date +%Y-%m-%d-%H%M%S-)$USER"-"$UPDATE;
-      else
-        NEUNAME=$(date +%Y-%m-%d-%H%M%S-)$USER;
-      fi;
+      NEUNAME=$(date +%Y-%m-%d-%H%M%S-)$USER"-"$NAMEBD;
+
 
       # rename File backup database
       mv ./data/backup/dump.sql ./data/backup/$NEUNAME.sql
@@ -134,6 +131,7 @@ backupData(){
 
 eliminateContainer(){
   title;
+  myOrigin=$(basename `pwd`);
   echo " ";
   echo "Shaffen Containers ..."; echo " ";
   docker ps  --format "table {{.Ports}}\t{{.Names}}\t{{.Status}}" -a ;
@@ -147,12 +145,15 @@ eliminateContainer(){
 
   controlVar;
 
+  testOrigen $nameContainer $myOrigin;
+
   myDb='db';
-  if [[ $nameContainer =~ $myDb ]]; then
+  if [[ "$nameContainer" =~ "$myDb" ]]; then
 
     backupData $nameContainer $UPDATE;
 
   fi;
+
   docker stop $nameContainer;
   docker rm $nameContainer;
   title;

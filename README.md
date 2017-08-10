@@ -9,13 +9,13 @@ Dieses ist eine kleine Anwendung für bau Docker containers.
 in composer.json ...
 ```
 "require": {
-       .... 
+       ....
        "elementsystems/docker-manager": "0.*"
        ...
    }
 ```
 Dann schreiben Sie in ihnen CLI ...
-**Windows**: Sie müssen die Docker-Konsole eingeben. 
+**Windows**: Sie müssen die Docker-Konsole eingeben.
 
 ```
 # bash vendor/elementsystems/docker-manager/install.sh
@@ -152,7 +152,7 @@ User = root
 Password = admin
 
 
-## Datenbank.
+## Datenbank die Sicherheit.
 
 Die Datenbank ist mit dem Namen im **data** gespeichert werden **init.sql**
 
@@ -167,7 +167,15 @@ Beispieldatei **init.sql**
 **--Name** wird dann von "myDocker.sh" verwendet, um die "backup DataBase"
 
 
+- Wir können nicht löshen Conteiners von anderen Projekt.
+
+- Wenn wir Conteineres mit SQL direct mit Docker Comandos löschen, können wir die SQL datein verlieren.
+
 ![3 containers](https://github.com/ElementSystems/docker-prototyp/blob/master/dev_install/info.jpg)
+
+
+
+
 
 ## Die werkzeug
 
@@ -182,7 +190,7 @@ Die werkzeug gebraucht in diesem Anwendung. Wir installieren druch  "Composer".
 
 **myDocker.sh** macht  eine backup Datenbank. In **./data/backup** . Der Name der Backup wird automatisch mit folgender Struktur erstellt:
 
-```Y-m-d-hmsNameUser-update.sql```
+```Y-m-d-hms-NameUser-NameDB.sql```
 
 
 ## Datenbanksicherheit
@@ -199,12 +207,12 @@ Um zu erkennen, dass ein Container eine Datenbank enthält, muss der Service als
 
 # Verzeichnisstruktur
 
-- **command** - Dateien suport Jenkins. 
+- **command** - Dateien suport Jenkins.
 - **data** - Basedate init for Dev.
     - **backup** - Backups von Dev, generate von myDocker.sh .
-- **dev_install** - includes for myDocker.sh. 
-- **doc** - Dokumentation von PHPDocumentator. 
-- **reports** - Reports von Jenkins Test 
+- **dev_install** - includes for myDocker.sh.
+- **doc** - Dokumentation von PHPDocumentator.
+- **reports** - Reports von Jenkins Test
 - **src** - Code.
 - **tests** - Dateien PHPunit.
 - **vendor** - Vendor.

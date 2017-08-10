@@ -52,13 +52,37 @@ checkUnsereDB(){
 }
 
 
+testOrigen(){
+
+
+
+  myOriginLimpio=$myOrigin;
+  my2="${myOriginLimpio/-/}"
+
+  if [[ "$nameContainer" =~ "$my2" ]]; then
+      echo "OK"
+  else
+      while true; do
+      echo -e "\e[1;31mThis container is not of this project!\e[0m"
+      echo -e "Inserts a project container \e[0;36m"$myOrigin"\e[0m or m for Menü ";
+      read   nameContainer;
+      case $nameContainer in
+          [mM]* )   break;;
+          * ) testOrigen $nameContainer $myOrigin; break;;
+        esac
+      done
+
+  fi;
+}
+
+
 
 controlVar(){
 
   space=' ';
-  if [[ $nameContainer =~ $space ]] ; then
+  if [[ "$nameContainer" =~ "$space" ]] ; then
     echo -e "\e[1;31mEs durft nicht spaces im  container namer zu schriben. \e[0m"
-    read   nameContainer;
+    read   nameContainer
     controlVar;
   fi;
 
