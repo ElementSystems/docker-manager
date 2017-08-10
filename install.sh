@@ -25,9 +25,7 @@ overwrite(){
   cp -r `pwd`/vendor/elementsystems/docker-manager/tools/data `pwd`/data
   echo "data Ordener -> Overwriting."
 
-  echo ""
-  echo "ok All ist fertig!"
-  echo " "
+  allIStOk;
 
 }
 
@@ -119,22 +117,27 @@ check(){
         cp `pwd`/vendor/elementsystems/docker-manager/myDocker.sh `pwd`/myDocker.sh
 
 
-        echo ""
-        echo "Everything is already installed."
-        echo ""
-        echo "---------------------------------"
-        echo -e "\e[0;33mRUN\e[0m: bash myDocker.sh"
-        echo "---------------------------------"
-        echo ""
-        echo "Have a nice day. :D"
-        echo ""
-        echo ""
+        allIStOk;
 
       else
         echo "\e[0;31mThere was a problem during installation\e[0m  :( "
       fi;
 }
 
+
+allIStOk(){
+  echo ""
+  echo "Everything is already installed."
+  echo ""
+  echo "---------------------------------"
+  echo -e "\e[0;33mRUN\e[0m: bash myDocker.sh"
+  echo "---------------------------------"
+  echo ""
+  echo "Have a nice day. :D"
+  echo ""
+  echo ""
+
+}
 
 
 installHead;
