@@ -1,5 +1,11 @@
 #!/bin/bash
 # -*- ENCODING: UTF-8 -*-
+
+#title            :myDocker.sh
+#description      :Container Docker builder
+#auto             :Element Systems <info@elementsystems> www.elementsystems.de
+#date             :20170809
+
 clear
 source `pwd`/vendor/elementsystems/docker-manager/dev_install/menus.sh
 

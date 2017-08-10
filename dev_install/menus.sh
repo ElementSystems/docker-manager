@@ -1,6 +1,10 @@
 #!/bin/bash
 # -*- ENCODING: UTF-8 -*-
 
+#title            :menus.sh
+#description      :Helpers for myDocker.sh
+#auto             :Element Systems <info@elementsystems> www.elementsystems.de
+#date             :20170809
 
 title() {
     clear
