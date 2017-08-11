@@ -9,12 +9,19 @@
 clear
 source `pwd`/vendor/elementsystems/docker-manager/dev_install/menus.sh
 
+# Configuration Global Variable
+
+
 runDocker(){
   myDirProject=$(basename `pwd`);
   rm .env
-  echo "PORT_DB="$PORT_DB >> .env
-  echo "PORT_PHPMYADMIN="$PORT_PHPMYADMIN >> .env
-  echo "PORT_PHP="$PORT_PHP >> .env
+
+  for i in `seq 1 $CONTAINERS`;
+    do
+      y=$i-1;
+      echo ${arrPORTS[$y]}"="${arrMYPORTS[$y]} >> .env
+    done
+
   title;
   echo " "
   echo -e "\e[36mNeu zugeordnete Ports ...\e[0m"
@@ -32,20 +39,21 @@ checkPorts(){
         fragt=$defaultPort;
     fi;
 
-    re='^[0-9]+$';
-    if [[ $fragt =~ $re ]]; then
-      echo ""
-    else
-        echo ""
-        echo -e "Falsh: \e[1;31m"$fragt"\e[0m \e[0;36mEs ist keine Zahl.\e[0m"
-        while true; do
-        read   fragt;
-        case $fragt in
-            * ) checkPorts $fragt $portsInUser; break;;
-          esac
-        done
 
-    fi;
+      re='^[0-9]+$';
+      if [[ $fragt =~ $re ]]; then
+        echo ""
+      else
+          echo ""
+          echo -e "Falsh: \e[1;31m"$fragt"\e[0m \e[0;36mEs ist keine Zahl.\e[0m"
+          while true; do
+          read   fragt;
+          case $fragt in
+              * ) checkPorts $fragt $portsInUser; break;;
+            esac
+          done
+
+      fi;
 
 
   if [[ "$portsInUser" =~ "$fragt" ]]; then
@@ -65,10 +73,6 @@ checkPorts(){
 
 optionsPorts() {
   title;
-
-  PORT_DB="3307"
-  PORT_PHPMYADMIN="8100"
-  PORT_PHP="8050"
   echo ""
   echo "PORTS Gebraucht ..."
   echo ""
@@ -77,29 +81,22 @@ optionsPorts() {
 
   portsInUser=$(docker ps --format "{{.Ports}}");
 
-  echo " Bitte, Geben Sie den PORT für DataBase [default: 3307] : "
-  read fragt
-  defaultPort=$PORT_DB;
-  checkPorts $fragt $portsInUser $defaultPort;
-  PORT_DB=$fragt
-  echo -e "\e[0;36mDataBase Container PORT= "$PORT_DB"\e[0m "
-  echo ""
+  arrNAMES=(${NAMES//,/ })
+  arrPORTS=(${PORTS//,/ })
+  arrDEFAULT_PORTS=(${DEFAULT_PORTS//,/ })
 
-  echo "Bitte, Geben Sie den PORT für PHPmyAdmin [default: 8100] : "
-  read fragt
-  defaultPort=$PORT_PHPMYADMIN;
-  checkPorts $fragt $portsInUser $defaultPort;
-  PORT_PHPMYADMIN=$fragt
-  echo -e "\e[0;36mPHPmyAdmin Container PORT= "$PORT_PHPMYADMIN"\e[0m "
-  echo ""
-
-  echo "Bitte, Geben Sie den PORT für Server-PHP [default: 8050] : "
-  read fragt
-  defaultPort=$PORT_PHP;
-  checkPorts $fragt $portsInUser $defaultPort;
-  PORT_PHP=$fragt
-  echo -e "\e[0;36mServer-PHP Container PORT= "$PORT_PHP"\e[0m "
-  echo ""
+  for i in `seq 1 $CONTAINERS`;
+  do
+    echo " - Container #"$i": "${arrNAMES[$y]}
+    y=$i-1
+    echo " Bitte, Geben Sie den Port für "${arrPORTS[$y]}" [default: "${arrDEFAULT_PORTS[$y]}"] : "
+    read fragt
+    defaultPort=${arrDEFAULT_PORTS[$y]};
+    checkPorts $fragt $portsInUser $defaultPort;
+    arrMYPORTS[$y]=$fragt
+    echo -e "\e[0;36m"${arrNAMES[$y]}" Container PORT= "${arrMYPORTS[$y]}"\e[0m "
+    echo ""
+  done
 
   title;
   menuPorts;
@@ -237,4 +234,6 @@ seheImages(){
 
 
 title;
+initConfi;
+
 hauptmenu;

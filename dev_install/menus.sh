@@ -6,6 +6,38 @@
 #auto             :Element Systems <info@elementsystems> www.elementsystems.de
 #date             :20170809
 
+
+
+initConfi(){
+  IN=''
+  while read line
+  do
+     IN=$IN$line";"
+  done < `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker
+  arrIN=(${IN//;/ })
+
+  for i in "${arrIN[@]}"; do
+
+    if [[ "$i" =~ "containers" ]]; then
+      export CONTAINERS=(${i//containers=/ })
+    fi;
+
+    if [[ "$i" =~ "names" ]]; then
+      export NAMES=(${i//names=/ })
+    fi;
+
+    if [[ "$i" =~ "ports" ]]; then
+      export PORTS=(${i//ports=/ })
+    fi;
+
+    if [[ "$i" =~ "default" ]]; then
+      export DEFAULT_PORTS=(${i//default=/ })
+    fi;
+  done
+
+}
+
+
 title() {
     clear
     myDirTitle=$(basename `pwd`);
@@ -17,7 +49,20 @@ title() {
     echo -e "\e[0;33mProjekt\e[0m: \e[0;36m $myDirTitle\e[0m"
     echo -e "\e[0;33mUser\e[0m:    \e[0;36m $USER \e[0m"
 
+    if [ -f /`pwd`/docker-compose.yml.base ];
+    then
+      echo -e "\e[0;31m-------------------------------------------------------------\e[0m"
+      echo ""
+      echo -e "\e[0;31mVorsicht!\e[0m: Deine Docker-Compose heißst docker-compose.yml.base "
+      echo ""
+      echo -e "Du musst die endung \e[0;31m.base\e[0m löschen"
+      echo ""
+      echo -e "\e[0;31m--------------------------------------------------------------\e[0m"
+    fi;
+
 }
+
+
 
 
 checkUnsereDB(){
@@ -45,7 +90,7 @@ checkUnsereDB(){
         docker stop $i;
         docker rm  $i;
        fi;
-       
+
      done
      echo "Bitte warten Sie einen Moment ..."
      title;
@@ -178,9 +223,13 @@ menuStarten(){
 menuPorts(){
 
   while true; do
-      echo -e " PORT_DB : \e[1;33m$PORT_DB\e[0m"
-      echo -e " PORT_PHPMYADMIN : \e[1;33m$PORT_PHPMYADMIN\e[0m"
-      echo -e " PORT_PHP : \e[1;33m$PORT_PHP\e[0m"
+
+    for i in `seq 1 $CONTAINERS`;
+      do
+        y=$i-1;
+        echo -e " - "${arrPORTS[$y]}"  : \e[1;33m"${arrMYPORTS[$y]}"\e[0m"
+      done
+
       echo " "
       read -p  "Ist das richtig?
       [j] Ja. [n] Nein, Noch mal.

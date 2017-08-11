@@ -18,12 +18,17 @@ overwrite(){
   chmod -x `pwd`/vendor/elementsystems/docker-manager/myDocker.sh
   cp `pwd`/vendor/elementsystems/docker-manager/myDocker.sh `pwd`/myDocker.sh
   echo "myDocker.sh -> Overwriting."
+
   cp  `pwd`/vendor/elementsystems/docker-manager/tools/doc.sh `pwd`/doc.sh
   echo "doc.sh -> Overwriting."
 
   rm -r `pwd`/data
   cp -r `pwd`/vendor/elementsystems/docker-manager/tools/data `pwd`/data
   echo "data Ordener -> Overwriting."
+
+  rm -r `pwd`/docker-compose.yml.base
+  cp -r `pwd`/vendor/elementsystems/docker-manager/tools/docker-compose.yml.base `pwd`/docker-compose.yml.base
+  echo "docker-compose.yml.base   -> Overwriting."
 
   allIStOk;
 
@@ -86,13 +91,13 @@ check(){
 
       if [ $composeIst = 0 ];
       then
-        cp  `pwd`/vendor/elementsystems/docker-manager/tools/docker-compose.yml  `pwd`/docker-compose.yml
-        if [ -f /`pwd`/docker-compose.yml ];
+        cp  `pwd`/vendor/elementsystems/docker-manager/tools/docker-compose.yml.base  `pwd`/docker-compose.yml.base
+        if [ -f /`pwd`/docker-compose.yml.base ];
         then
-          echo " - "$myDirProject"/docker-compose.yml -> Installed"
+          echo " - "$myDirProject"/docker-compose.yml.base -> Installed"
           composeIst=1;
         else
-          echo -e "\e[0;31mERROR\e[0m: docker-compose.yml not created"
+          echo -e "\e[0;31mERROR\e[0m: docker-compose.yml.base not created"
         fi;
 
       fi;
@@ -120,7 +125,8 @@ check(){
         allIStOk;
 
       else
-        echo "\e[0;31mThere was a problem during installation\e[0m  :( "
+        echo -e "\e[0;31mThere was a problem during installation\e[0m  :( "
+        echo ""
       fi;
 }
 
