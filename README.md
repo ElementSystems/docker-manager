@@ -32,51 +32,7 @@ Wenn die instalation fertig ist, können Sie myDocker.sh benutzen ...
 
 ## Gebrauch Manager project
 
-Die Datenbank muss im SQL-Format sein.
-
-Es muss in ```/data/ ``` und mit dem Namen **init.sql** sein.
-
-**Es ist Wichtig**:
-Er muss in die erste liena setzen...
-
-```
---Name_DataBase
-
-```
-Zu Bispiele:
-
-```
---midb3
-CREATE DATABASE midb3;
-USE midb3;
-
-CREATE TABLE `names` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `names`
---
-
-INSERT INTO `names` (`id`, `name`) VALUES
-(1, 'Peter'),
-(2, 'Thomas');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `names`
---
-ALTER TABLE `names`
-  ADD PRIMARY KEY (`id`);
-
-..... etc. etc.
-
-```
-
+[Konfigurationsdetails](https://github.com/ElementSystems/docker-manager/wiki)
 
 ## Gebrauch entwickler
 
