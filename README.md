@@ -32,7 +32,7 @@ Wenn die instalation fertig ist, können Sie myDocker.sh benutzen ...
 
 ## Gebrauch Manager project
 
-[Konfigurationsdetails](https://github.com/ElementSystems/docker-manager/wiki)
+[Konfigurationsdetails Wiki](https://github.com/ElementSystems/docker-manager/wiki)
 
 ## Gebrauch entwickler
 
