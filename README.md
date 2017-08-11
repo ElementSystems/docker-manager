@@ -5,7 +5,6 @@ Dieses ist eine kleine Anwendung für bau Docker containers.
 ## Installation
 
 
-
 in composer.json ...
 ```
 "require": {
@@ -15,11 +14,16 @@ in composer.json ...
    }
 ```
 Dann schreiben Sie in ihnen CLI ...
+
 **Windows**: Sie müssen die Docker-Konsole eingeben.
 
 ```
 # bash vendor/elementsystems/docker-manager/install.sh
 ```
+Der Installateur wird einen Standard-Docker-Komponisten erstellen. Dies hat den Namen **docker-compose.yml.base**, wenn wir es verwenden wollen, müssen wir die **.base** beseitigen.
+
+Wir können das Standard-Docker-Compose verwenden oder ein bestimmtes konfigurieren. Sobald die Docker-komponiert konfiguriert sind, können wir sie an die Entwickler verteilen, damit sie ihre Container erstellen können.
+
 Wenn die instalation fertig ist, können Sie myDocker.sh benutzen ...
 
 ```
