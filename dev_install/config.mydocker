@@ -1,4 +1,4 @@
-containers=34
+containers=3
 names=db,phpmyadmin,php
 ports=PORT_DB,PORT_PHPMYADMIN,PORT_PHP
 default=3307,8100,8050
