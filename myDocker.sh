@@ -76,11 +76,16 @@ optionsPorts() {
   echo ""
   echo "PORTS Gebraucht ..."
   echo ""
-  docker ps  --format "{{.Ports}}"
-  echo ""
 
   portsInUser=$(docker ps --format "{{.Ports}}");
-
+    dame=${portsInUser//'0.0.0.0:'/ }
+    dame=${dame//'->80/tcp'/ }
+    dame=${dame//'/tcp'/ }
+    dame=${dame//','/ }
+    dame=${dame//'->'/ }
+    dame=${dame//,/ } 
+  echo $dame ;
+  echo ""
   arrNAMES=(${NAMES//,/ })
   arrPORTS=(${PORTS//,/ })
   arrDEFAULT_PORTS=(${DEFAULT_PORTS//,/ })
