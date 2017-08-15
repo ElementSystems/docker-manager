@@ -13,7 +13,7 @@ initConfi(){
   while read line
   do
      IN=$IN$line";"
-  done < `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker
+  done < `pwd`/config.mydocker
   arrIN=(${IN//;/ })
 
   for i in "${arrIN[@]}"; do
@@ -58,8 +58,19 @@ title() {
       echo -e "Du musst die endung \e[0;31m.base\e[0m löschen"
       echo ""
       echo -e "\e[0;31m--------------------------------------------------------------\e[0m"
+      echo ""
     fi;
 
+    if [ -f /`pwd`/config.mydocker.base ];
+    then
+      echo -e "\e[0;31m-------------------------------------------------------------\e[0m"
+      echo ""
+      echo -e "\e[0;31mVorsicht!\e[0m: Deine Docker-Compose heißst config.mydocker.base "
+      echo ""
+      echo -e "Du musst die endung \e[0;31m.base\e[0m löschen"
+      echo ""
+      echo -e "\e[0;31m--------------------------------------------------------------\e[0m"
+    fi;
 }
 
 

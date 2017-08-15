@@ -15,6 +15,10 @@ overwrite(){
   echo "Overwriting ..."
   echo ""
 
+  chmod -x `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker
+  cp `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker `pwd`/config.mydocker
+  echo "myDocker.sh -> Overwriting."
+
   chmod -x `pwd`/vendor/elementsystems/docker-manager/myDocker.sh
   cp `pwd`/vendor/elementsystems/docker-manager/myDocker.sh `pwd`/myDocker.sh
   echo "myDocker.sh -> Overwriting."
@@ -69,6 +73,13 @@ check(){
         composeIst=1;
       fi;
 
+
+      if [ -f /`pwd`/config.mydocker ];
+      then
+        echo " - "$myDirProject"/config.mydocker -> Exists"
+        configMyDocker=1;
+      fi;
+
       if [ -f /`pwd`/doc.sh ];
       then
         echo " - "$myDirProject"/doc.sh -> Exists"
@@ -98,6 +109,22 @@ check(){
           composeIst=1;
         else
           echo -e "\e[0;31mERROR\e[0m: docker-compose.yml.base not created"
+        fi;
+
+      fi;
+
+      if [ $configMyDocker = 0 ];
+      then
+        chmod -x `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker
+        cp `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker `pwd`/config.mydocker
+
+        cp  `pwd`/vendor/elementsystems/docker-manager/dev_install/config.mydocker  `pwd`/config.mydocker.base
+        if [ -f /`pwd`/config.mydocker.base ];
+        then
+          echo " - "$myDirProject"/config.mydocker.base -> Installed"
+          configMyDocker=1;
+        else
+          echo -e "\e[0;31mERROR\e[0m: config.mydocker.base not created"
         fi;
 
       fi;
